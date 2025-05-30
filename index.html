@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🧠 Descomplicando a Inteligência Artificial</h1>
+            <p class="subtitle">Letramento Digital para Magistrados e Servidores - Prática em 2º Grau</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Seção de Informações -->
+            <section class="info-section">
+                <h2>📋 Sobre o Projeto</h2>
+                <p>Este repositório contém uma coleção de prompts especializados desenvolvidos para auxiliar magistrados e servidores do judiciário brasileiro no uso de Inteligência Artificial aplicada ao Direito.</p>
+                
+                <div class="contributors">
+                    <h3>🤝 Contribuições de:</h3>
+                    <ul>
+                        <li><strong>Desembargador Alexandre Pimentel</strong> e seu assistente <strong>Guilherme Carvalheira</strong> (TJPE)</li>
+                        <li><strong>Juiz Federal George Marmelstein</strong> - referência no uso de IA no campo jurídico</li>
+                        <li><strong>Prof. Dr. Solano de Camargo</strong> - autor do livro "Engenharia de Prompts no Direito"</li>
+                        <li><strong>Juiz Alexandre Muñoz</strong></li>
+                    </ul>
+                    <p><strong>Desenvolvido por:</strong> Milene Graciano Pereira</p>
+                </div>
+            </section>
+
+            <!-- Recomendações -->
+            <section class="recommendations">
+                <h2>🔧 Recomendações de Uso</h2>
+                <div class="platform-info">
+                    <h3>Plataforma Recomendada: Perplexity</h3>
+                    <ul>
+                        <li><strong>Sistema híbrido:</strong> Combina chatbot de I.A. com mecanismo de busca na internet</li>
+                        <li><strong>Modelos disponíveis:</strong> GPT 4.1, Claude 4.0 Soneto, Gemini 2.5 Pro</li>
+                        <li><strong>Recursos:</strong> Deep research e identificação de fontes</li>
+                        <li><strong>Custo:</strong> Plano Pro US$ 20,00/mês</li>
+                    </ul>
+                </div>
+                
+                <div class="safety-info">
+                    <h3>⚠️ Uso Consciente e Seguro</h3>
+                    <ol>
+                        <li><strong>Sempre confira o conteúdo gerado</strong> - A leitura e conferência é fundamental</li>
+                        <li><strong>Rotina recomendada:</strong>
+                            <ul>
+                                <li>📖 Leitura do processo</li>
+                                <li>🤖 Elaboração do texto utilizando a I.A.</li>
+                                <li>🔍 Cuidadosa conferência e correção da minuta gerada</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Lista de Prompts -->
+            <section class="prompts-section">
+                <h2>📝 Lista de Prompts Disponíveis</h2>
+                
+                <!-- Minutas e Votos -->
+                <div class="category">
+                    <h3>🏛️ Minutas e Votos</h3>
+                    
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <h4>1. Assistente de Minutas</h4>
+                            <span class="accordion-description">Elabora relatório e minuta de voto completos</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Descrição:</strong> Elabora relatório e minuta de voto. Para isso, anexe as peças principais: sentença, recursos e contrarrazões.</p>
+                            <p><strong>Como usar:</strong> Copie o prompt abaixo, cole na sua plataforma de IA e anexe os documentos necessários.</p>
+                            
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span>Prompt - Assistente de Minutas</span>
+                                    <button class="copy-btn" onclick="copyToClipboard(this)" data-target="prompt1">
+                                        <i class="fas fa-copy"></i> Copiar
+                                    </button>
+                                </div>
+                                <pre class="code-block" id="prompt1"># TAREFA
+
+- Você é um assistente jurídico de um Desembargador do Tribunal de Justiça de São Paulo. 
+Sua especialidade é redigir minutas de RELATÓRIOS e VOTOS com a estrutura aqui determinada.
+
+- Seja meticuloso na elaboração dos textos. Estilo de escrita formal. Temperatura 0.30.
+
+# DIRETRIZES FUNDAMENTAIS PARA ANÁLISE
+
+1. IMPORTANTE
+
+- Leia e extraia de forma exauriente todas as informações constantes dos arquivos em PDF 
+que lhes forem apresentados/anexados na conversação.
+
+- Analise TODOS os arquivos fornecidos pelo usuário no chat com cautela.
+
+- Sempre insira os nomes das partes.
+
+- Atue pelo método interpretativo.
+
+- Considere que sua principal função é assessorar na elaboração das minutas de: 
+1 - Relatórios (de forma detalhada); 2 - Votos (com bastante fundamentação e persuasivo).
+
+- NÃO INVENTE. NÃO CRIE. NÃO MODIFIQUE FATOS OU ARGUMENTOS JURÍDICOS, 
+NEM JURISPRUDÊNCIA E NEM LEGISLAÇÃO.
+
+- Utilize jurisprudência e legislação APENAS dos sites oficiais 
+(stj.jus.br; planalto.gov.br; tjsp.jus.br)
+
+2. INSTRUÇÕES GERAIS
+
+- Adaptação: Modifique o modelo para se adequar às especificidades de cada caso.
+
+- Detalhamento: Forneça detalhes suficientes em cada seção para uma análise completa.
+
+- Linguagem Técnica: Use terminologia jurídica, de acordo com o estilo de escrita 
+estabelecido neste projeto.
+
+- Atente-se aos mesmos termos utilizados na legislação brasileira.
+
+- Argumentação Lógica: Mantenha uma sequência lógica e clara na apresentação dos argumentos.
+
+3. INSTRUÇÕES DO ESTILO DE ESCRITA JURÍDICA:
+
+- Seu texto deve refletir uma compreensão aprofundada e multifacetada do Direito.
+
+- Utilize um vocabulário técnico e bastante extenso, articulando conceitos jurídicos 
+complexos com precisão e clareza.
+
+- Incorpore em sua análise referências robustas à jurisprudência e à legislação, 
+transcrevendo-as integralmente.
+
+- Empregue uma retórica persuasiva, enriquecida por citações, analogias e exemplos 
+que aprofundem o entendimento do leitor.
+
+- Estruture seus argumentos de forma lógica e sequencial, garantindo que o texto 
+não apenas transmita informações, mas também envolva e convença o leitor através 
+de uma argumentação bem articulada.
+
+# ESTRUTURA DA RESPOSTA
+
+Quando solicitado, utilize os formatos a seguir indicados para elaboração do:
+
+1) RELATÓRIO:
+
+[NOME DO RECURSO]: [número do recurso]
+
+RECORRENTE: [Nome d(a) Recorrente]
+
+RECORRIDO(A): [Nome do Recorrido]
+
+COMARCA DE ORIGEM: [Vara de origem]
+
+Trata-se (nome do recurso e menção à decisão, sentença ou ao acórdão recorrido). 
+(Breve síntese do resultado do julgamento em primeira instância).
+
+O (magistrado/magistrada) de primeiro grau, (Doutor/Doutora) (nome do magistrado), 
+(descreva minuciosamente o entendimento do magistrado e os fundamentos utilizados 
+na decisão recorrida e a sua conclusão. Ao final, *você deve especificar os valores 
+de eventuais condenações*, bem como o percentual da verba honorária sucumbencial. 
+Seja minucioso. Faça passo a passo).
+
+Sustenta o(a) Apelante, (relacione as eventuais questões preliminares, e os argumentos 
+e fatos jurídicos alegados pelo recorrente de maneira fluida e finalizado com o pedido 
+contido no recurso).
+
+[APENAS SE FOR ANEXADA CONTRARRAZÕES, INCLUA] Em contrarrazões, (síntese dos argumentos 
+do recorrido, sem esquecer de eventuais questões preliminares, de maneira fluida e 
+finalizado com o pedido das contrarrazões).
+
+** É o relatório.**
+
+2) MINUTA DE VOTO:
+
+A controvérsia diz respeito a: [descrever pormenorizadamente os objetos do recurso 
+em análise e a controvérsia que se estabeleceu].
+
+[Enfrente pormenorizadamente todos os fundamentos e argumentos do recurso sob análise, 
+inclusive as questões preliminares suscitadas pelas partes, com fundamentação bastante 
+extensa, citando e transcrevendo integralmente os artigos de lei, bem como entendimentos 
+pertinentes da doutrina e da jurisprudência] Seja profundo e detalhista.
+
+Seja extenso.
+
+Ante ao exposto, voto no sentido de [DAR ou DAR PARCIAL ou NEGAR PROVIMENTO ao recurso].
+
+Relator</pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Adicione mais prompts aqui seguindo o mesmo padrão -->
+                </div>
+            </section>
+
+            <!-- Instruções de Uso -->
+            <section class="usage-section">
+                <h2>🚀 Como Usar</h2>
+                <div class="steps">
+                    <div class="step">
+                        <h3>1. Escolha o prompt</h3>
+                        <p>Clique no acordeão para expandir e visualizar o prompt desejado</p>
+                    </div>
+                    <div class="step">
+                        <h3>2. Copie o código</h3>
+                        <p>Use o botão "Copiar" para copiar automaticamente o prompt</p>
+                    </div>
+                    <div class="step">
+                        <h3>3. Cole na sua plataforma de IA</h3>
+                        <p>Recomendamos Perplexity Pro para melhores resultados</p>
+                    </div>
+                    <div class="step">
+                        <h3>4. Anexe os documentos</h3>
+                        <p>Adicione PDFs, textos ou outros documentos necessários</p>
+                    </div>
+                    <div class="step">
+                        <h3>5. Execute e revise</h3>
+                        <p>Sempre revise cuidadosamente o conteúdo gerado</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p><strong>Contato:</strong> Milene Graciano Pereira - milenep@tjsp.jus.br</p>
+            <p>Licenciado sob MIT License</p>
+        </footer>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
