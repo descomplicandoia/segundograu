@@ -1,0 +1,7 @@
+title: "Descomplicando a Inteligência Artificial"
+description: "Letramento Digital para Magistrados e Servidores"
+theme: minima
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
