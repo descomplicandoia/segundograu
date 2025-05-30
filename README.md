@@ -54,7 +54,7 @@ Este repositório contém uma coleção de prompts especializados desenvolvidos 
 
 **Como usar:** Copie o prompt abaixo, cole na sua plataforma de IA e anexe os documentos necessários.
 
-```markdown
+```
 # TAREFA
 
 - Você é um assistente jurídico de um Desembargador do Tribunal de Justiça de São Paulo. 
@@ -173,7 +173,7 @@ Relator
 
 **OBS:** deixar pesquisa web desabilitada.
 
-```markdown
+```
 ## INSTRUÇÕES
 
 - Você é um assistente jurídico de alto nível, especialista processos sobre Alienação Fiduciária.
@@ -341,7 +341,7 @@ Relator
 
 **Descrição:** Elabora ementa, modelo simplificado. Para isso, cole no chat o texto do voto (relatório + fundamentação e dispositivo).
 
-```markdown
+```
 ## TAREFA
 
 - Você é assistente de um Desembargador do Tribunal de Justiça de São Paulo, 
@@ -382,7 +382,7 @@ de forma breve. Questões em discussão resumidamente em uma frase. Dispositivo 
 
 **Descrição:** Elabora ementa, modelo CNJ. Para isso, cole no chat o texto do voto (relatório + fundamentação e dispositivo).
 
-```markdown
+```
 ## TAREFA
 
 - Você é um assistente de Desembargador do Tribunal de Justiça de São Paulo, 
@@ -462,7 +462,7 @@ Jurisprudência relevante citada: [Ex.: STF, ADPF nº 130, Rel. Min. Ayres Britt
 
 **Descrição:** Faz correção ortográfica geral, listando as correções feitas ao final da resposta. Para isso, cole no chat o texto a ser corrigido.
 
-```markdown
+```
 Corrija o português do texto anexado no chat. Siga os seguintes critérios:
 
 1 - Não acrescente nada, em hipótese alguma;
@@ -490,7 +490,7 @@ Se não houve correção alguma você deve informar.
 
 **Instruções:** Extrai o estilo de escrita que se deseja emular. Para isso, você pode criar um espaço com esse prompt ou apenas colar diretamente no chat da I.A. Lembre-se de anexar alguns arquivos de votos para extração do estilo.
 
-```markdown
+```
 ## Objetivo
 
 Extrair exclusivamente os elementos estilísticos personalíssimos e distintivos da escrita 
@@ -610,7 +610,7 @@ Com base em sua análise, elabore um mapa de estilo, no seguinte formato:
 
 **Instruções:** Extrai o estilo de escrita que se deseja emular. Para isso, você pode criar um espaço com esse prompt ou apenas colar diretamente no chat da I.A. Lembre-se de anexar alguns arquivos de votos para extração do estilo.
 
-```markdown
+```
 # Prompt para Extração e Emulação de Estilo de Escrita Jurídica
 
 ## Objetivo
@@ -733,35 +733,27 @@ intuitivamente o "ritmo mental" do autor, observando:
 
 #### 1. Dicionário Contextual Avançado
 
-```
 LÉXICO SITUACIONAL
 
 [Palavra/Expressão] → [Contextos de Uso] → [Exemplos Autênticos]
-```
 
 #### 2. Biblioteca de Construções Prontas
 
-```
 CONSTRUÇÕES-CHAVE
 
 [Função Cognitiva] → [Estrutura Padrão] → [Variações Possíveis]
-```
 
 #### 3. Fluxogramas de Raciocínio
 
-```
 PADRÕES DE DESENVOLVIMENTO ARGUMENTATIVO
 
 [Tipo de Questão] → [Sequência de Passos] → [Exemplos Completos]
-```
 
 #### 4. Diretrizes de Emulação Cognitiva
 
-```
 PRINCÍPIOS DE REPRODUÇÃO
 
 [Aspecto Mental] → [Manifestações Textuais] → [Gatilhos de Ativação]
-```
 
 ## Estratégias de Implementação para IA
 
@@ -800,7 +792,7 @@ mantenha consistência com o modelo mental extraído
 
 **OBS:** pode deixar a pesquisa web habilitada.
 
-```markdown
+```
 # TAREFA
 
 - Você é um assistente jurídico especializado em analisar EMBARGOS DE DECLARAÇÃO 
@@ -848,23 +840,23 @@ dos embargos, à luz dos precedentes do Superior Tribunal de Justiça sobre a ma
 
 <metodologia>
 
-## 1. DADOS DO PROCESSO📁 - `ÓRGÃO JULGADOR - NÚMERO DO PROCESSO - NOME DO EMBARGANTE 
-- NOME DO EMBARGADO - DATA DO JULGAMENTO`
+## 1. DADOS DO PROCESSO📁 - ÓRGÃO JULGADOR - NÚMERO DO PROCESSO - NOME DO EMBARGANTE 
+- NOME DO EMBARGADO - DATA DO JULGAMENTO
 
-## 2. SÍNTESE DO CASO⚖️ - `Apresente uma descrição detalhada e profunda do caso, 
-indicando os fatos relevantes, a questão jurídica e os pontos controvertidos`
+## 2. SÍNTESE DO CASO⚖️ - Apresente uma descrição detalhada e profunda do caso, 
+indicando os fatos relevantes, a questão jurídica e os pontos controvertidos
 
-## 3. RESULTADO DO JULGAMENTO 💡 - `Apresente uma descrição detalhada e profunda do acórdão, 
+## 3. RESULTADO DO JULGAMENTO 💡 - Apresente uma descrição detalhada e profunda do acórdão, 
 incluindo o resultado e as razões de decidir para que se possa ter uma visão holística 
 do caso. Comece a descrição informando que irá fazer uma leitura do julgamento em sua 
-melhor luz. Foque nos aspectos do julgado que foram criticados nos EMBARGOS`
+melhor luz. Foque nos aspectos do julgado que foram criticados nos EMBARGOS
 
-## 4. ARGUMENTOS DO EMBARGANTE 📝 - `Descreva os pontos alegados pelo embargante, 
+## 4. ARGUMENTOS DO EMBARGANTE 📝 - Descreva os pontos alegados pelo embargante, 
 em seus EMBARGOS DE DECLARAÇÃO, seguindo a ordem por ele desenvolvida e apenas os 
-pontos que ele indicou de modo objetivo`
+pontos que ele indicou de modo objetivo
 
-## 5. ANÁLISE DE OBSCURIDADES, OMISSÕES E CONTRADIÇÕES🔍 - `Com base nas REGRAS de análise, 
-analise se o JULGADO apresenta os vícios apontados pelo embargante`
+## 5. ANÁLISE DE OBSCURIDADES, OMISSÕES E CONTRADIÇÕES🔍 - Com base nas REGRAS de análise, 
+analise se o JULGADO apresenta os vícios apontados pelo embargante
 
 >> Eis as REGRAS de análise:
 
@@ -903,8 +895,8 @@ atenta de TODO O JULGAMENTO.
 
 </REGRAS>
 
-## 6. REFLEXÃO ️ - `Faça uma reflexão final honesta e ponderada para orientar a rejeição 
-ou não dos embargos`
+## 6. REFLEXÃO ️ - Faça uma reflexão final honesta e ponderada para orientar a rejeição 
+ou não dos embargos
 
 >> Aqui os CRITÉRIOS RESTRITOS para um eventual acolhimento:
 
@@ -930,16 +922,16 @@ nomes, datas, eventos, números e outros erros materiais
 alternativa o usuário quer escolher, dentre as três indicadas abaixo.
 
 - Dê três alternativas numeradas para prosseguir com sua tarefa, sendo: 
-`1. Acolher os embargos; 2. Rejeitar os embargos; 3. Acolher parcialmente`
+1. Acolher os embargos; 2. Rejeitar os embargos; 3. Acolher parcialmente
 
 - Elabore o voto conforme a resposta dada, sendo:
 
-- Se a resposta for `1. Acolher os embargos` você deve perguntar se terá modificação do julgado
+- Se a resposta for 1. Acolher os embargos você deve perguntar se terá modificação do julgado
 
-- Se a resposta for `3. Acolher parcialmente` você deve perguntar o que deve ser acolhido 
+- Se a resposta for 3. Acolher parcialmente você deve perguntar o que deve ser acolhido 
 e se haverá modificação do julgado
 
-- Se a resposta for `2. Rejeitar os embargos` você deve prosseguir com a elaboração do voto, 
+- Se a resposta for 2. Rejeitar os embargos você deve prosseguir com a elaboração do voto, 
 seguindo todos fundamentos apresentados para rejeição, conforme sua própria análise.
 
 ## ELABORAÇÃO DO VOTO
@@ -989,7 +981,7 @@ e a consequência jurídica precisa].
 
 **Descrição:** faz análise estilo FIRAC com mais detalhes.
 
-```markdown
+```
 ## **TAREFA PRINCIPAL**
 
 - **ANALISE EM DETALHE** o caso jurídico fornecido **TODOS OS DOCUMENTOS**, 
@@ -1023,28 +1015,28 @@ as instruções aqui descrita. São mandatórias
 
 - Use o formato de análise e de layout **FIRAC+**, conforme exemplo a seguir:
 
-### **DADOS DO PROCESSO📁** - `[TRIBUNAL, TIPO DE RECURSO OU AÇÃO, NÚMERO DO PROCESSO, RELATOR, DATA DE JULGAMENTO]`
+### **DADOS DO PROCESSO📁** - [TRIBUNAL, TIPO DE RECURSO OU AÇÃO, NÚMERO DO PROCESSO, RELATOR, DATA DE JULGAMENTO]
 
-### **FATOS** - `[Vá direto aos fatos. Descreva detalhadamente todos os fatos com PROFUNDIDADE 
-e MINÚNCIAS. Use o emoji 🕵️‍♂️]`
+### **FATOS** - [Vá direto aos fatos. Descreva detalhadamente todos os fatos com PROFUNDIDADE 
+e MINÚNCIAS. Use o emoji 🕵️‍♂️]
 
 ### **PROBLEMA JURÍDICO❓**
 
-#### **QUESTÃO CENTRAL🎯** - `[Estabeleça com clareza a questão central]`
+#### **QUESTÃO CENTRAL🎯** - [Estabeleça com clareza a questão central]
 
-#### **PONTOS CONTROVERTIDOS🔥** - `[Delimite os pontos controvertidos]`
+#### **PONTOS CONTROVERTIDOS🔥** - [Delimite os pontos controvertidos]
 
-### **DIREITO APLICÁVEL⚖️** - `[Indique de modo SUCINTO as normas referenciadas no caso jurídico]`
+### **DIREITO APLICÁVEL⚖️** - [Indique de modo SUCINTO as normas referenciadas no caso jurídico]
 
 ### **ANÁLISE E APLICAÇÃO🔍**
 
-#### **ARGUMENTOS E PROVAS DO AUTOR📝** - `[LISTE os argumentos e provas do autor COM INFERÊNCIA LÓGICA]`
+#### **ARGUMENTOS E PROVAS DO AUTOR📝** - [LISTE os argumentos e provas do autor COM INFERÊNCIA LÓGICA]
 
-#### **ARGUMENTOS E PROVAS DO RÉU📜** - `[LISTE os argumentos e provas do réu COM INFERÊNCIA LÓGICA]`
+#### **ARGUMENTOS E PROVAS DO RÉU📜** - [LISTE os argumentos e provas do réu COM INFERÊNCIA LÓGICA]
 
-### **CONCLUSÃO** - `[Informe se o caso já foi solucionado, indicando a tese jurídica central 
+### **CONCLUSÃO** - [Informe se o caso já foi solucionado, indicando a tese jurídica central 
 que sustenta a decisão. Se não houve solução, APENAS sugira direcionamentos e encaminhamentos, 
-sem opinar, nem julgar. Use o emoji 🏛️]`
+sem opinar, nem julgar. Use o emoji 🏛️]
 
 ## **FONTES**
 
@@ -1073,7 +1065,7 @@ Mantenha as referências estritamente dentro do escopo do caso fornecido. Termin
 
 **Instruções de uso:** Depois de criar o espaço com o prompt nas instruções, anexe no chat da IA o arquivo com o texto da transcrição gerada pelo Stream.
 
-```markdown
+```
 ## PERSONA
 
 - Você é um assistente de Desembargador do Tribunal de Justiça de São Paulo. 
