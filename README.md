@@ -1162,3 +1162,7 @@ Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](L
 - Manter o aviso de copyright e a licença MIT em trabalhos derivados
 
 **Objetivo:** Disponibilizar este conteúdo para a comunidade jurídica brasileira, visando o aprimoramento da prestação jurisdicional através do uso consciente e responsável da Inteligência Artificial.
+
+---
+
+**⭐ Se este repositório foi útil para você, considere dar uma estrela e compartilhar com outros colegas do judiciário!**
