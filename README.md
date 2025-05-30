@@ -541,6 +541,7 @@ Com base em sua análise, elabore um mapa de estilo, no seguinte formato:
 [Instruções específicas para reproduzir fielmente o estilo]
 ```
 
+
 ### 7. Extração de Estilo de Escrita - Modelo 02
 
 **Instruções:** Extrai o estilo de escrita que se deseja emular. Para isso, você pode criar um espaço com esse prompt ou apenas colar diretamente no chat da I.A. Lembre-se de anexar alguns arquivos de votos para extração do estilo.
@@ -706,35 +707,27 @@ Antes de iniciar a análise formal, faça uma leitura completa dos textos para a
 
 #### 1. Dicionário Contextual Avançado
 
-```
 LÉXICO SITUACIONAL
 
 [Palavra/Expressão] → [Contextos de Uso] → [Exemplos Autênticos]
-```
 
 #### 2. Biblioteca de Construções Prontas
 
-```
 CONSTRUÇÕES-CHAVE
 
 [Função Cognitiva] → [Estrutura Padrão] → [Variações Possíveis]
-```
 
 #### 3. Fluxogramas de Raciocínio
 
-```
 PADRÕES DE DESENVOLVIMENTO ARGUMENTATIVO
 
 [Tipo de Questão] → [Sequência de Passos] → [Exemplos Completos]
-```
 
 #### 4. Diretrizes de Emulação Cognitiva
 
-```
 PRINCÍPIOS DE REPRODUÇÃO
 
 [Aspecto Mental] → [Manifestações Textuais] → [Gatilhos de Ativação]
-```
 
 ## Estratégias de Implementação para IA
 
