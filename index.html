@@ -23,7 +23,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             width: 100%;
             text-align: center;
         }
@@ -59,9 +59,9 @@
 
         .courses-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            max-width: 900px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
             margin: 0 auto;
             animation: fadeInUp 1s ease-out 0.3s both;
         }
@@ -69,7 +69,7 @@
         .course-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 25px;
-            padding: 50px 40px;
+            padding: 40px 30px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
@@ -103,8 +103,8 @@
         }
 
         .course-icon {
-            font-size: 4rem;
-            margin-bottom: 25px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             display: block;
             filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.1));
         }
@@ -123,8 +123,15 @@
             background-clip: text;
         }
 
+        .converter-card .course-icon {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .course-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 15px;
             color: #2c3e50;
@@ -132,37 +139,37 @@
         }
 
         .course-date {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #7f8c8d;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .course-description {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #555;
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .course-features {
             text-align: left;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .feature {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
             color: #666;
         }
 
         .feature-icon {
             margin-right: 10px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .perplexity-card .feature-icon {
@@ -173,15 +180,19 @@
             color: #27ae60;
         }
 
+        .converter-card .feature-icon {
+            color: #9b59b6;
+        }
+
         .cta-button {
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -194,6 +205,10 @@
 
         .emphasis-card .cta-button {
             background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .converter-card .cta-button {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
         }
 
         .cta-button:hover {
@@ -249,6 +264,12 @@
             }
         }
 
+        @media (max-width: 1024px) {
+            .courses-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             .main-title {
                 font-size: 2.5rem;
@@ -260,15 +281,15 @@
             
             .courses-container {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 25px;
             }
             
             .course-card {
-                padding: 40px 30px;
+                padding: 35px 25px;
             }
             
             .course-title {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
         }
 
@@ -351,6 +372,34 @@
                 </div>
                 <button class="cta-button">Acessar Biblioteca de Prompts</button>
             </a>
+
+            <a href="https://descomplicandoia.github.io/conversor-documentos-react/" class="course-card converter-card" target="_blank">
+                <span class="course-icon">📄</span>
+                <h2 class="course-title">Conversor - Documentos</h2>
+                <p class="course-date">Ferramenta Online</p>
+                <p class="course-description">
+                    É capaz de converter milhares de documentos Word (.docx) para texto puro (.txt) e salva em um único arquivo para formação de base de votos.
+                </p>
+                <div class="course-features">
+                    <div class="feature">
+                        <span class="feature-icon">✅</span>
+                        <span>Converte DOCX para TXT</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✅</span>
+                        <span>Processamento em lote</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✅</span>
+                        <span>Arquivo único de saída</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">✅</span>
+                        <span>Base de votos organizada</span>
+                    </div>
+                </div>
+                <button class="cta-button">Acessar Conversor</button>
+            </a>
         </div>
 
         <div class="footer">
@@ -375,7 +424,8 @@
         document.querySelectorAll('.course-card').forEach((card, index) => {
             card.addEventListener('click', function() {
                 // You can add analytics tracking here if needed
-                console.log(`Curso ${index === 0 ? 'Perplexity' : 'Ênfase'} selecionado`);
+                const courseNames = ['Perplexity', 'Ênfase', 'Conversor'];
+                console.log(`Curso ${courseNames[index]} selecionado`);
             });
         });
     </script>
