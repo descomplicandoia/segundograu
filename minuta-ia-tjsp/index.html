@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Minuta IA — Guia</title>
+<meta name="description" content="Passo a passo ilustrado para começar a usar o Minuta IA TJSP, do zero até exportar o voto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #f6f5f2;
+    --surface: #ffffff;
+    --surface-2: #efeee9;
+    --ink: #1c1e21;
+    --ink-muted: #5b6169;
+    --ink-faint: #8a8f97;
+    --border: #e2e0da;
+    --accent: #a41f2a;
+    --accent-ink: #ffffff;
+    --accent-soft: #f6e6e6;
+    --accent2: #2f4c6b;
+    --accent2-soft: #e7edf3;
+    --success: #2e7d53;
+    --success-soft: #e5f2ea;
+    --shadow: 0 1px 2px rgba(28,30,33,.04), 0 8px 24px -12px rgba(28,30,33,.12);
+    --radius: 14px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15171a;
+      --surface: #1d2024;
+      --surface-2: #24272c;
+      --ink: #edecea;
+      --ink-muted: #a7acb3;
+      --ink-faint: #787e86;
+      --border: #2d3136;
+      --accent: #e2707a;
+      --accent-ink: #201013;
+      --accent-soft: #35191c;
+      --accent2: #86aed0;
+      --accent2-soft: #1c2732;
+      --success: #5fbf8c;
+      --success-soft: #14261d;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #15171a;
+    --surface: #1d2024;
+    --surface-2: #24272c;
+    --ink: #edecea;
+    --ink-muted: #a7acb3;
+    --ink-faint: #787e86;
+    --border: #2d3136;
+    --accent: #e2707a;
+    --accent-ink: #201013;
+    --accent-soft: #35191c;
+    --accent2: #86aed0;
+    --accent2-soft: #1c2732;
+    --success: #5fbf8c;
+    --success-soft: #14261d;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    padding-inline: 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; text-wrap: balance; margin: 0; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  a { color: var(--accent); }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 780px; margin: 0 auto; }
+
+  /* ---------- header ---------- */
+  header.top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding-block: 14px;
+    margin-inline: -20px;
+    padding-inline: 20px;
+  }
+  .top-inner { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .top-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: baseline; gap: 8px; }
+  .brand .mark {
+    font-family: "IBM Plex Mono"; font-size: 11px; font-weight: 600; letter-spacing: .09em;
+    color: var(--accent); text-transform: uppercase;
+    background: var(--accent-soft); padding: 3px 8px; border-radius: 999px;
+  }
+  .brand h1 { font-size: 19px; }
+
+  .tracks { display: flex; gap: 6px; background: var(--surface-2); padding: 4px; border-radius: 10px; }
+  .track-btn {
+    appearance: none; border: none; background: transparent; cursor: pointer;
+    font-family: "Source Sans 3"; font-size: 14px; font-weight: 600; color: var(--ink-muted);
+    padding: 7px 14px; border-radius: 7px; transition: background .15s, color .15s;
+  }
+  .track-btn[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+  .track-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .progress-row { display: flex; align-items: center; gap: 10px; }
+  .progress-track { flex: 1; height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width .3s ease; width: 0%; }
+  [data-track-page="embargos"] .progress-fill { background: var(--accent2); }
+  .progress-label { font-size: 12.5px; color: var(--ink-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .reset-btn {
+    background: none; border: none; color: var(--ink-faint); font-size: 12.5px; text-decoration: underline;
+    cursor: pointer; padding: 0; font-family: "Source Sans 3";
+  }
+
+  /* ---------- intro ---------- */
+  .intro { padding-block: 28px 8px; }
+  .intro p { color: var(--ink-muted); max-width: 62ch; }
+  .chip-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--border); background: var(--surface);
+    padding: 6px 12px; border-radius: 999px; font-size: 13.5px; color: var(--ink-muted);
+  }
+  .chip a { color: inherit; text-decoration: none; font-weight: 600; }
+  .chip strong { color: var(--ink); }
+
+  /* ---------- step list ---------- */
+  .track-panel[hidden] { display: none !important; }
+  .steps { position: relative; padding-block: 20px 40px; }
+  .rail {
+    position: absolute; left: 19px; top: 20px; bottom: 40px; width: 2px;
+    background: var(--border);
+  }
+  .step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 18px;
+    padding-block: 22px;
+  }
+  .step + .step { border-top: 1px solid var(--border); }
+  .step-num {
+    position: relative; z-index: 1;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--surface); border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "IBM Plex Mono"; font-weight: 600; font-size: 14px; color: var(--ink-muted);
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  .step.done .step-num { border-color: var(--success); color: var(--success); background: var(--success-soft); }
+  [data-track-page="basico"] .step-num { }
+  [data-track-page="basico"] .step:not(.done):hover .step-num { border-color: var(--accent); color: var(--accent); }
+  [data-track-page="embargos"] .step:not(.done):hover .step-num { border-color: var(--accent2); color: var(--accent2); }
+
+  .step-body { min-width: 0; }
+  .step-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+  .step-title { font-size: 18px; line-height: 1.3; }
+  .step.done .step-title { color: var(--ink-muted); }
+  .step-eyebrow {
+    font-family: "IBM Plex Mono"; font-size: 11px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  [data-track-page="embargos"] .step-eyebrow { color: var(--accent2); }
+
+  .check {
+    flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+    font-size: 12.5px; color: var(--ink-faint); user-select: none; padding-top: 3px;
+  }
+  .check input { accent-color: var(--success); width: 15px; height: 15px; }
+
+  .step ul { margin: 10px 0 0; padding-left: 20px; color: var(--ink); }
+  .step li { margin-bottom: 6px; }
+  .step li:last-child { margin-bottom: 0; }
+  .step li b { font-weight: 600; }
+
+  .tip {
+    display: flex; gap: 10px; margin-top: 14px; padding: 12px 14px;
+    background: var(--accent2-soft); border-radius: 10px; font-size: 14.5px; color: var(--ink);
+  }
+  .tip b { color: var(--accent2); }
+
+  figure.media {
+    margin: 16px 0 0; border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; background: var(--surface-2); box-shadow: var(--shadow);
+  }
+  figure.media img, figure.media video { width: 100%; display: block; }
+  figure.media figcaption {
+    padding: 9px 13px; font-size: 12.5px; color: var(--ink-muted);
+    border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px;
+  }
+  .clip-tag {
+    font-family: "IBM Plex Mono"; font-size: 10px; font-weight: 600; letter-spacing: .06em;
+    color: var(--accent); background: var(--accent-soft); padding: 2px 6px; border-radius: 5px;
+    text-transform: uppercase;
+  }
+
+  .recap {
+    margin: 8px 0 36px; padding: 18px 20px; border-radius: var(--radius);
+    background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
+  }
+  .recap h3 { font-size: 15px; margin-bottom: 6px; }
+  .recap p { margin: 0; color: var(--ink-muted); font-size: 14.5px; }
+  .recap .mono { color: var(--ink); }
+
+  .final-tips { padding-block: 4px 60px; }
+  .final-tips h2 { font-size: 20px; margin-bottom: 14px; }
+  .final-tips ul { padding-left: 20px; color: var(--ink-muted); }
+  .final-tips li { margin-bottom: 8px; }
+
+  footer.page {
+    text-align: center; padding-block: 22px 40px; color: var(--ink-faint); font-size: 12.5px;
+  }
+
+  @media (max-width: 560px) {
+    .step { grid-template-columns: 32px 1fr; gap: 12px; }
+    .step-num { width: 32px; height: 32px; font-size: 12px; }
+    .rail { left: 15px; }
+    .brand h1 { font-size: 17px; }
+    .step-title { font-size: 16.5px; }
+  }
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="top-row">
+      <div class="brand">
+        <span class="mark">Guia</span>
+        <h1>Minuta IA · TJSP</h1>
+      </div>
+      <div class="tracks" role="tablist" aria-label="Fluxo">
+        <button class="track-btn" role="tab" id="tab-basico" aria-selected="true" data-target="basico">Fluxo básico</button>
+      </div>
+    </div>
+    <div class="progress-row">
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <span class="progress-label" id="progress-label">0 de 7 concluídos</span>
+      <button class="reset-btn" id="reset-btn" type="button">reiniciar</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="intro" id="intro-basico">
+    <p>Tutorial com o caminho mais curto para carregar um processo, subir um modelo de voto e elaborar a minuta — o suficiente para começar a usar hoje.</p>
+    <div class="chip-row">
+      <span class="chip">🕑 <strong>~8 min</strong> de leitura</span>
+      <span class="chip">🖱️ <strong>7 passos</strong></span>
+      <span class="chip">Acesso: <a href="#" onclick="return false" title="minutaia.tjsp.jus.br">minutaia.tjsp.jus.br</a></span>
+    </div>
+  </section>
+  <div class="track-panel" data-track-page="basico">
+    <div class="steps" id="steps-basico"><div class="rail"></div></div>
+    <div class="recap">
+      <h3>Resumindo o básico</h3>
+      <p>Suba os documentos do processo pelo número → carregue seu modelo (da biblioteca, se já tiver salvo) → no <span class="mono">Chat</span>, ligue a <b>Pesquisa jurídica</b> → mude para <span class="mono">Minuta</span>, escreva a instrução para gerar a minuta e clique na seta.</p>
+    </div>
+  </div>
+
+  <section class="final-tips">
+    <h2>Para lembrar sempre</h2>
+    <ul>
+      <li>Use <b>Nova Minuta</b> sempre que mudar de processo — isso limpa o contexto anterior.</li>
+      <li>Não misture documentos de processos diferentes na mesma conversa.</li>
+      <li><b>Chat</b> serve para pensar, perguntar e resumir (sem limite). <b>Minuta</b> serve para redigir, revisar e finalizar (limite de 80 por mês).</li>
+      <li>Prefira instruções diretas e objetivas — evite prompts genéricos ou cheios de explicações de formatação.</li>
+      <li>Confira sempre fatos, valores, nomes, datas, legislação e jurisprudência antes de usar o resultado. A revisão humana é indispensável.</li>
+    </ul>
+  </section>
+
+  <footer class="page">Guia interno · Minuta IA TJSP — Desenvolvido por Milene Graciano Pereira</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var DATA = {
+    basico: [
+      {
+        id: "b1", eyebrow: "Documentos",
+        title: "Carregue os documentos do processo",
+        blocks: [
+          { bullets: [
+            "Clique na aba <b>Documentos</b>.",
+            "Clique no botão de importar processo direto do EPROC ou do e-SAJ.",
+            "Cole o número do processo.",
+            "Escolha o <b>Grau de Jurisdição</b>: 1º Grau quando o processo inteiro está no primeiro grau (caso comum de apelação); 2º Grau quando já está no tribunal.",
+            "Clique em <b>Consultar MNI</b>."
+          ]},
+          { media: { type: "video", src: "basico_importar.mp4", caption: "Colando o número do processo e escolhendo o grau de jurisdição." } }
+        ]
+      },
+      {
+        id: "b2", eyebrow: "Documentos",
+        title: "Selecione as peças e importe",
+        blocks: [
+          { bullets: [
+            "Em processos pequenos (até 100 páginas ou pouco mais), pode deixar marcada a opção <b>“Selecionar todos”</b> para carregar o processo inteiro.",
+            "Em processos maiores, é válido desmarcar essa opção e escolher só as peças principais (sentença, recurso, contrarrazões, dentre outras necessárias para elaboração da minuta).",
+            "Deixe o <b>OCR automático</b> ligado — ele lê documentos escaneados sozinho.",
+            "Clique em <b>Importar</b>."
+          ]},
+          { tip: "em processos muito grandes, o próprio sistema avisa do limite e sugere a <b>seleção assistida</b>, que indica sozinha as peças mais importantes." },
+          { media: { type: "video", src: "basico_selecao.mp4", caption: "Selecionando as peças do processo antes de importar." } }
+        ]
+      },
+      {
+        id: "b3", eyebrow: "Modelos",
+        title: "Suba um modelo de voto",
+        blocks: [
+          { bullets: [
+            "Na aba <b>Modelos</b> → <b>Arquivos</b>, escolha um voto pronto que você já usa como referência.",
+            "A IA copia o estilo de escrita, o tom e a estrutura desse modelo."
+          ]},
+          { media: { type: "video", src: "basico_subindo_modelo.mp4", caption: "Enviando um voto de referência para o MinutaIA copiar o estilo." } },
+          { bullets: [
+            "Escolha a aderência ao modelo entre <b>“Flexível”, “Rigoroso” ou “Molde”</b>: em flexível a IA tem liberdade total na elaboração da minuta, usando o modelo apenas como referência de tom e estilo de escrita; em rigoroso ela preserva a ordem dos tópicos, vocabulário e ritmo do texto original; em molde o sistema atuará como um “carimbo”, alterando apenas dados variáveis (nomes, datas).",
+            "<b>Salvando o modelo:</b> para usar esse mesmo modelo em outras minutas, você pode salvar na biblioteca. Dê um nome ao seu modelo e escolha o tipo de aderência."
+          ]},
+          { tip: "depois de salvo, não precisa mais procurar o arquivo no computador — da próxima vez é só carregar pela Biblioteca." },
+          { media: { type: "video", src: "basico_salvando_modelo_completo.mp4", caption: "Salvando o modelo na biblioteca, no modo Rigoroso." } }
+        ]
+      },
+      {
+        id: "b4", eyebrow: "Chat / Minuta",
+        title: "Escolha Chat ou Minuta, e ligue a Pesquisa jurídica",
+        blocks: [
+          { bullets: [
+            "<b>Chat</b>: tirar dúvidas sobre o conteúdo do processo, pedir um resumo ou um despacho simples.",
+            "<b>Minuta</b>: elaboração da minuta do voto/sentença. Limite de 80 minutas por mês.",
+            "Antes de gerar a minuta, lembre-se de deixar a <b>“Pesquisa jurídica”</b> habilitada."
+          ]},
+          { media: { type: "video", src: "basico_pesquisa_juridica.mp4", caption: "Painel “Como a IA trabalha”, com a Pesquisa jurídica habilitada." } }
+        ]
+      },
+      {
+        id: "b5", eyebrow: "Geração",
+        title: "Gerando a minuta",
+        blocks: [
+          { bullets: [
+            "Mude para <b>Minuta</b>.",
+            "Se quiser, ajuste a <b>Verbosidade</b>: Curto (padrão) ou Longo.",
+            "Escreva sua instrução — ex.: <span class=\"mono\">“Elabore o voto negando provimento ao recurso”</span>.",
+            "Clique na seta para iniciar a geração e aguarde."
+          ]},
+          { media: { type: "video", src: "basico_gerando_minuta.mp4", caption: "Minuta sendo gerada a partir da instrução enviada." } }
+        ]
+      },
+      {
+        id: "b6", eyebrow: "Finalização",
+        title: "Exporte para Word",
+        blocks: [
+          { bullets: [
+            "Com o voto pronto, clique em <b>Exportar</b> → salvar em Word."
+          ]},
+          { tip: "revise sempre fatos, nomes, datas, valores, jurisprudência e citações antes de usar. A revisão humana é indispensável." },
+          { media: { type: "video", src: "basico_salvando_word.mp4", caption: "Salvando o voto exportado, já em Word." } }
+        ]
+      },
+      {
+        id: "b7", eyebrow: "Extra",
+        title: "Explore as Habilidades",
+        blocks: [
+          { bullets: [
+            "Em <b>Referências → Habilidades</b> existem pacotes de conhecimento jurídico por matéria (DPVAT, bancário, consumidor…).",
+            "Clique em <b>Fixar</b> para aplicar numa geração específica; <b>desafixar</b> para tirar.",
+            "<b>Obs.:</b> o Minuta IA já vai selecionar as habilidades que entender pertinentes quando estiver gerando a minuta."
+          ]},
+          { media: { type: "video", src: "basico_habilidades_menu.mp4", caption: "Menu de Habilidades, com jurisprudência, legislação e mais." } }
+        ]
+      }
+    ],
+    embargos: [
+      {
+        id: "e1", eyebrow: "Prompts",
+        title: "Salve um prompt de análise personalizado",
+        blocks: [
+          { bullets: [
+            "Cole no <b>Chat</b> o texto do prompt que você usa para analisar embargos.",
+            "Clique no ícone de disquete <b>Salvar como prompt personalizado</b>.",
+            "Dê um nome (ex.: “embargos”), escolha uma categoria (ex.: “Análise”) e clique em <b>Guardar</b>."
+          ]},
+          { media: { type: "video", src: "embargos_salvar_prompt.mp4", caption: "Salvando o prompt de análise na janela Gerenciar Prompts." } }
+        ]
+      },
+      {
+        id: "e2", eyebrow: "Prompts",
+        title: "Reutilize o prompt salvo",
+        blocks: [
+          { bullets: [
+            "Digite <span class=\"mono\">/</span> no campo de instrução para ver seus prompts salvos (estrela amarela) e os prontos do sistema.",
+            "Tudo o que você salva — prompts e modelos — fica disponível na aba <b>Biblioteca</b>."
+          ]},
+          { media: { type: "img", src: "img/embargos_03_biblioteca.png", caption: "Aba Biblioteca, com prompts e modelos salvos." } }
+        ]
+      },
+      {
+        id: "e3", eyebrow: "Modelos",
+        title: "Salve um modelo de voto de embargos",
+        blocks: [
+          { bullets: [
+            "Na aba <b>Modelos</b>, suba um voto de embargos que você já usa como referência.",
+            "Para embargos, o modo <b>Rigoroso</b> costuma funcionar bem — mantém a estrutura e o ritmo do modelo."
+          ]},
+          { media: { type: "img", src: "img/embargos_04_salvar_modelo.png", caption: "Modelo de embargos salvo no modo Rigoroso." } }
+        ]
+      },
+      {
+        id: "e4", eyebrow: "Documentos",
+        title: "Busque o processo com atenção ao grau e ao tamanho",
+        blocks: [
+          { bullets: [
+            "Na aba Documentos, digite o número — embargos são normalmente do <b>2º Grau</b>.",
+            "Atenção: embargos do e-SAJ não são baixados automaticamente — suba o arquivo manualmente em <b>Arquivos</b>.",
+            "Em processos grandes, ative a <b>Seleção assistida</b> — ela aponta sozinha as peças mais importantes."
+          ]},
+          { tip: "para uma análise de embargos, normalmente bastam o acórdão, o recurso de quem embargou, e a sentença/contrarrazões." },
+          { media: { type: "img", src: "img/embargos_05_processo_grande.png", caption: "Aviso de processo grande, com a seleção assistida." } }
+        ]
+      },
+      {
+        id: "e5", eyebrow: "Conferência",
+        title: "Confira tudo carregado antes de seguir",
+        blocks: [
+          { bullets: [
+            "Depois de importar peças, modelo e prompt, dê uma olhada na tela <b>Início</b>: documentos, modelo (com o modo escolhido) e prompt, tudo certo."
+          ]},
+          { media: { type: "img", src: "img/embargos_06_contexto_pronto.png", caption: "Início mostrando tudo já carregado e pronto." } }
+        ]
+      },
+      {
+        id: "e6", eyebrow: "Análise",
+        title: "Rode a análise no Chat com a Pesquisa jurídica ligada",
+        blocks: [
+          { bullets: [
+            "Fique em <b>Chat</b> (não gasta o limite de minutas) e mantenha a <b>Pesquisa jurídica</b> ligada.",
+            "Carregue seu prompt salvo (barra <span class=\"mono\">/</span>) e envie."
+          ]},
+          { media: { type: "img", src: "img/embargos_07_pesquisa_juridica.png", caption: "Prompt de análise carregado, com Pesquisa jurídica ligada." } }
+        ]
+      },
+      {
+        id: "e7", eyebrow: "Análise",
+        title: "Leia o resultado com atenção",
+        blocks: [
+          { bullets: [
+            "O sistema traz a síntese do caso, os argumentos de quem embargou, e um parecer técnico final — com uma sugestão de encaminhamento."
+          ]},
+          { tip: "o aviso “Você está no modo Chat. Para gerar documentos, altere para o modo Minuta” é normal — é só o sinal de que chegou a hora de mudar." },
+          { media: { type: "img", src: "img/embargos_08_resultado_analise.png", caption: "Resultado da análise, com os argumentos do embargante." } }
+        ]
+      },
+      {
+        id: "e8", eyebrow: "Geração",
+        title: "Gere a minuta do voto",
+        blocks: [
+          { bullets: [
+            "Mude para <b>Minuta</b> (confira se o modelo continua carregado).",
+            "Escreva o pedido com a conclusão desejada — ex.: <span class=\"mono\">“Elabore a minuta: rejeitar embargos”</span>."
+          ]},
+          { media: { type: "video", src: "embargos_gerando_minuta.mp4", caption: "Instrução enviada em modo Minuta — o sistema elaborando o voto." } }
+        ]
+      },
+      {
+        id: "e9", eyebrow: "Finalização",
+        title: "Revise e exporte",
+        blocks: [
+          { bullets: [
+            "Confira a ementa, os fundamentos e as referências às páginas do processo.",
+            "Clique em <b>Exportar</b> → Word, salve na pasta e finalize com o timbre do tribunal."
+          ]},
+          { media: { type: "img", src: "img/embargos_11_exportado_word.png", caption: "Voto de embargos já exportado, aberto no Word." } }
+        ]
+      }
+    ]
+  };
+
+  function el(tag, attrs, html) {
+    var e = document.createElement(tag);
+    if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+
+  function safeStorage() {
+    try {
+      var k = "__t"; localStorage.setItem(k, "1"); localStorage.removeItem(k);
+      return window.localStorage;
+    } catch (e) { return null; }
+  }
+  var LS = safeStorage();
+  var STORE_KEY = "minutaia-guia-progress-v1";
+
+  function loadProgress() {
+    if (!LS) return {};
+    try { return JSON.parse(LS.getItem(STORE_KEY) || "{}"); } catch (e) { return {}; }
+  }
+  function saveProgress(p) {
+    if (!LS) return;
+    try { LS.setItem(STORE_KEY, JSON.stringify(p)); } catch (e) {}
+  }
+  var progress = loadProgress();
+
+  function renderTrack(trackId) {
+    var container = document.getElementById("steps-" + trackId);
+    DATA[trackId].forEach(function (step, i) {
+      var isDone = !!progress[step.id];
+      var stepEl = el("article", { class: "step" + (isDone ? " done" : ""), "data-step-id": step.id });
+
+      var num = el("div", { class: "step-num" }, String(i + 1));
+      stepEl.appendChild(num);
+
+      var body = el("div", { class: "step-body" });
+
+      var head = el("div", { class: "step-head" });
+      var titleWrap = el("div");
+      titleWrap.appendChild(el("div", { class: "step-eyebrow" }, step.eyebrow));
+      titleWrap.appendChild(el("h3", { class: "step-title" }, step.title));
+      head.appendChild(titleWrap);
+
+      var label = el("label", { class: "check" });
+      var cb = el("input", { type: "checkbox" });
+      cb.checked = isDone;
+      cb.addEventListener("change", function () {
+        progress[step.id] = cb.checked;
+        saveProgress(progress);
+        stepEl.classList.toggle("done", cb.checked);
+        updateProgressUI();
+      });
+      label.appendChild(cb);
+      label.appendChild(document.createTextNode("feito"));
+      head.appendChild(label);
+
+      body.appendChild(head);
+
+      step.blocks.forEach(function (block) {
+        if (block.bullets) {
+          var ul = el("ul");
+          block.bullets.forEach(function (b) { ul.appendChild(el("li", null, b)); });
+          body.appendChild(ul);
+        } else if (block.tip) {
+          body.appendChild(el("div", { class: "tip" }, "<span>💡</span><span><b>Dica:</b> " + block.tip + "</span>"));
+        } else if (block.media) {
+          var m = block.media;
+          var fig = el("figure", { class: "media" });
+          if (m.type === "video") {
+            var vid = el("video", {
+              src: m.src, autoplay: "", loop: "", muted: "", playsinline: "", "aria-label": m.caption
+            });
+            vid.muted = true;
+            fig.appendChild(vid);
+            fig.appendChild(el("figcaption", null, '<span class="clip-tag">clipe</span>' + m.caption));
+          } else {
+            fig.appendChild(el("img", { src: m.src, alt: m.caption, loading: "lazy" }));
+            fig.appendChild(el("figcaption", null, m.caption));
+          }
+          body.appendChild(fig);
+        }
+      });
+
+      stepEl.appendChild(body);
+      container.appendChild(stepEl);
+    });
+  }
+
+  function updateProgressUI() {
+    var active = document.querySelector('.track-btn[aria-selected="true"]').dataset.target;
+    var total = DATA[active].length;
+    var done = DATA[active].filter(function (s) { return !!progress[s.id]; }).length;
+    document.getElementById("progress-fill").style.width = (total ? (done / total * 100) : 0) + "%";
+    document.getElementById("progress-label").textContent = done + " de " + total + " concluídos";
+  }
+
+  function switchTrack(target) {
+    document.querySelectorAll(".track-btn").forEach(function (b) {
+      b.setAttribute("aria-selected", b.dataset.target === target ? "true" : "false");
+    });
+    document.querySelectorAll(".track-panel").forEach(function (p) {
+      p.hidden = p.dataset.trackPage !== target;
+    });
+    document.getElementById("intro-basico").hidden = target !== "basico";
+    document.body.dataset.active = target;
+    updateProgressUI();
+    // (re)play videos in the now-visible panel
+    document.querySelectorAll('.track-panel[data-track-page="' + target + '"] video').forEach(function (v) {
+      v.play().catch(function () {});
+    });
+  }
+
+  document.querySelectorAll(".track-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () { switchTrack(btn.dataset.target); });
+  });
+
+  document.getElementById("reset-btn").addEventListener("click", function () {
+    var active = document.querySelector('.track-btn[aria-selected="true"]').dataset.target;
+    DATA[active].forEach(function (s) { delete progress[s.id]; });
+    saveProgress(progress);
+    document.querySelectorAll('.track-panel[data-track-page="' + active + '"] .step').forEach(function (stepEl) {
+      stepEl.classList.remove("done");
+      var cb = stepEl.querySelector('input[type="checkbox"]');
+      if (cb) cb.checked = false;
+    });
+    updateProgressUI();
+  });
+
+  renderTrack("basico");
+  updateProgressUI();
+})();
+</script>
+</body>
+</html>
